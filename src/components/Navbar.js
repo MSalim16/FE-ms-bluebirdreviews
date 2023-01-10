@@ -5,8 +5,8 @@ export default function NavBar() {
     <div className="navbar-style">
       <header>
         <nav>
-          <NavLink to="/">Home</NavLink>
           <NavLink to="reviews">Reviews</NavLink>
+          <NavLink to="/">Home</NavLink>
           <NavLink to="login-page">Login</NavLink>
         </nav>
       </header>
