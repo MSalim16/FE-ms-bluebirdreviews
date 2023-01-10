@@ -1,39 +1,36 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Header from "./Components/Header/Header";
-import Navigation from "./Components/Navigation/Navigation";
-import Home from "./Pages/Home/Home";
-import AllReviews from "./Components/AllReviews/AllReviews";
-import { Link } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 
-const App = () => {
+// pages
+import Home from "./pages/Home/Home";
+import Review from "./pages/Reviews/Review";
+
+// layouts
+import NavBar from "./components/Navbar";
+import LoginPage from "./components/LoginPage";
+import Header from "./components/Header";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<NavBar />}>
+      <Route index element={<Home />} />
+      <Route path="reviews" element={<Review />} />
+      <Route path="login-page" element={<LoginPage />} />
+    </Route>
+  )
+);
+
+function App() {
   return (
-    <>
-      <div>
-        <Header />
-        {/* <Navigation /> */}
-        <nav>
-          <ul>
-            <li>
-              <Link to="/" className="site-title">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/AllReviews" className="site-title">
-                Reviews
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/all-reviews" element={<AllReviews />} />
-        </Routes> */}
-      </div>
-    </>
+    <div>
+      <Header />
+      <RouterProvider router={router} />
+    </div>
   );
-};
+}
 
 export default App;
