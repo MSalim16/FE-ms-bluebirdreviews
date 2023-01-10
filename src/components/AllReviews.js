@@ -1,4 +1,3 @@
-import React from "react";
 import { fetchReviews } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -7,20 +6,26 @@ import ReviewCard from "./ReviewCard";
 const AllReviews = () => {
   const [reviews, setReviews] = useState([{}]);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
+    setIsLoading(true);
     fetchReviews().then((reviewsFromApi) => {
-      console.log(reviewsFromApi);
+      setIsLoading(false);
       setReviews(reviewsFromApi);
     });
   }, []);
 
+  if (isLoading) {
+    return <h1>...Page is Loading</h1>;
+  }
   return (
     <div>
       <ul className="itemListWrapper">
         {reviews.map((review) => {
           return (
             <li className="list">
-              <Link to={review}>
+              <Link to={`${review.review_id}`}>
                 <ReviewCard key={review.review_id} {...review} />
               </Link>
             </li>

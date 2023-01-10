@@ -1,8 +1,6 @@
 import React from "react";
 
 const ReviewCard = (review) => {
-  console.log(review, "<< item from item card");
-
   return (
     <>
       <div className="item-card">
