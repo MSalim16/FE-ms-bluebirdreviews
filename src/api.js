@@ -8,14 +8,14 @@ export const fetchReviews = () => {
     });
 };
 
-// export const fetchReviewbyId = (reviewId) => {
-//   return fetch(
-//     `https://mohamed-salims-games-api.onrender.com/api/reviews/${review_id}`
-//   )
-//     .then((res) => {
-//       return res.json();
-//     })
-//     .then((data) => {
-//       return data.item;
-//     });
-// };
+export const fetchReviewbyId = (reviewid) => {
+  return fetch(
+    `https://mohamed-salims-games-api.onrender.com/api/reviews/${reviewid}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data.review;
+    });
+};

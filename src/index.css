@@ -15,7 +15,7 @@ header nav {
   display: flex;
   gap: 16px;
   justify-content: space-around;
-  max-width: 1200px;
+  max-width: 1920px;
   margin-bottom: 40px;
 }
 
@@ -33,12 +33,26 @@ header nav {
   list-style: hidden;
 }
 
+.singlereview {
+  border-radius: 3px;
+  border-style: solid;
+}
+
 @media (max-width: 1250px) {
   header nav {
     display: flex;
     gap: 16px;
     justify-content: space-around;
     max-width: 1200px;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 1920px) {
+  header nav {
+    display: flex;
+    gap: 16px;
+    justify-content: space-around;
+    max-width: 2560px;
     margin-bottom: 40px;
   }
 }
