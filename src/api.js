@@ -18,7 +18,16 @@ export const getReviewbyId = (review_id) => {
 
 export const getCommentsById = (review_id) => {
   return gamesUrl.get(`/reviews/${review_id}/comments`).then((review) => {
-    console.log(review.data.comments);
     return review.data.comments;
+  });
+};
+
+export const patchReviewVotes = (review_id, increment) => {
+  return gamesUrl.patch(`/reviews/${review_id}`, { inc_votes: increment });
+};
+
+export const getUsers = () => {
+  return gamesUrl.get("/users").then((users) => {
+    return users.data.users;
   });
 };

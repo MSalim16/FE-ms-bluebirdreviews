@@ -25,17 +25,30 @@ header nav {
 }
 
 .item-card {
-  border-radius: 3px;
+  border-radius: 2px;
   border-style: solid;
+  margin: 15px;
 }
 
 .itemListWrapper {
-  list-style: hidden;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .singlereview {
   border-radius: 3px;
   border-style: solid;
+}
+
+.users {
+  list-style: none;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
 @media (max-width: 1250px) {
