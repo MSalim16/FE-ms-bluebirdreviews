@@ -1,4 +1,4 @@
-import { fetchReviews } from "../api";
+import { getReviews } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
@@ -6,11 +6,10 @@ import ReviewCard from "./ReviewCard";
 const AllReviews = () => {
   const [reviews, setReviews] = useState([{}]);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetchReviews().then((reviewsFromApi) => {
+    getReviews().then((reviewsFromApi) => {
       setIsLoading(false);
       setReviews(reviewsFromApi);
     });
