@@ -1,7 +1,6 @@
 import { getReviews } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ReviewCard from "./ReviewCard";
 
 const AllReviews = () => {
   const [reviews, setReviews] = useState([{}]);
@@ -23,10 +22,18 @@ const AllReviews = () => {
       <ul className="itemListWrapper">
         {reviews.map((review) => {
           return (
-            <li className="list">
-              <Link to={`${review.review_id}`}>
-                <ReviewCard key={review.review_id} {...review} />
-              </Link>
+            <li className="list" key={review.review_id}>
+              <div className="item-card">
+                <h2 className="item-name">{review.title}</h2>
+                <img className="item-img" src={review.review_img_url}></img>
+
+                <Link to={`/reviews/${review.review_id}`}>
+                  <div className="read-more">
+                    <em>...</em>
+                    <strong>read more</strong>
+                  </div>
+                </Link>
+              </div>
             </li>
           );
         })}
