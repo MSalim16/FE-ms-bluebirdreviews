@@ -15,7 +15,7 @@ const AllReviews = () => {
   }, []);
 
   if (isLoading) {
-    return <h1>...Page is Loading</h1>;
+    return <h1>...All Reviews are Loading</h1>;
   }
   return (
     <div>
