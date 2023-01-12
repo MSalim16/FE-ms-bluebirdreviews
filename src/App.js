@@ -5,9 +5,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import { useState } from "react";
+
 // pages
 import Home from "./pages/Home/Home";
 import Review from "./pages/Reviews/Review";
+import UserContext from "./contexts/User";
 
 // layouts
 import NavBar from "./components/Navbar";
@@ -27,11 +30,18 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  const [user, setUser] = useState({
+    username: "guest",
+    name: "guest",
+    avatar_url: "https://www.computerhope.com/jargon/g/guest-user.jpg",
+  });
   return (
-    <div>
-      <Header />
-      <RouterProvider router={router} />
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <div>
+        <Header />
+        <RouterProvider router={router} />
+      </div>
+    </UserContext.Provider>
   );
 }
 

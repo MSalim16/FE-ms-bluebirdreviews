@@ -1,9 +1,15 @@
+@font-face {
+  font-family: "Robotto";
+  src: url("./fonts/Roboto-Regular.ttf");
+}
+
 body {
   margin: 0;
-  padding: 20px;
-  font-family: "Poppins";
+  padding: 10px;
+
   background: var(--secondary);
   height: 1000px;
+  font-family: "Robotto";
 }
 
 code {
@@ -11,34 +17,85 @@ code {
     monospace;
 }
 
+* {
+  background-color: #15202b;
+  color: white;
+  font-family: "Robotto";
+}
 header nav {
   display: flex;
-  gap: 16px;
+  gap: 15px;
   justify-content: space-around;
   max-width: 1920px;
   margin-bottom: 40px;
+  margin-top: 20px;
+  border: 2px;
+  border-radius: 5px;
+  border-style: solid;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  font-size: 20px;
+  justify-content: space-between;
+  border: 2px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: white;
+}
+
+.twitterlogo {
+  height: 125px;
+  width: 125px;
 }
 
 .item-img {
-  height: 75px;
-  width: 75px;
+  height: 100px;
+  width: 100px;
+  border: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: white;
+  margin-left: 10px;
 }
 
+.item-name {
+  margin-left: 10px;
+}
+
+.read-more {
+  margin-left: 10px;
+}
 .item-card {
-  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: -40px;
+  gap: 10px;
+  border: 2px;
+  border-radius: 5px;
   border-style: solid;
-  margin: 15px;
 }
 
 .itemListWrapper {
   list-style: none;
-  display: flex;
-  flex-direction: column;
 }
 
 .singlereview {
   border-radius: 3px;
   border-style: solid;
+}
+
+.avatar {
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  margin-top: 15px;
 }
 
 .users {
@@ -51,6 +108,117 @@ header nav {
   justify-content: center;
 }
 
+.users > button {
+  cursor: pointer;
+  width: 10%;
+  min-width: 150px;
+  border-radius: 2px;
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  background-color: #00aeff;
+}
+
+.users > button > img {
+  border: 5px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  width: 90%;
+}
+
+@media (max-width: 430px) {
+  .Header {
+    display: flex;
+    flex-direction: row;
+    font-size: 6px;
+    justify-content: space-between;
+    border: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+  }
+
+  .twitterlogo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .avatar {
+    border: 5px solid #00aeff;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 550px) {
+  .Header {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    justify-content: space-between;
+    border: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+  }
+
+  .twitterlogo {
+    height: 50px;
+    width: 50px;
+  }
+  header nav {
+    display: flex;
+    gap: 16px;
+    justify-content: space-around;
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+  .avatar {
+    border: 5px solid #00aeff;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 650px) {
+  .Header {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    justify-content: space-between;
+    border: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+  }
+
+  .twitterlogo {
+    height: 75px;
+    width: 75px;
+  }
+  header nav {
+    display: flex;
+    gap: 16px;
+    justify-content: space-around;
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+  .avatar {
+    border: 5px solid #00aeff;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    width: 50px;
+    height: 50px;
+  }
+}
+
 @media (max-width: 1250px) {
   header nav {
     display: flex;
@@ -61,6 +229,15 @@ header nav {
   }
 }
 @media (max-width: 1920px) {
+  header nav {
+    display: flex;
+    gap: 16px;
+    justify-content: space-around;
+    max-width: 2560px;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 2560px) {
   header nav {
     display: flex;
     gap: 16px;
