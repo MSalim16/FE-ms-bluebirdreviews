@@ -1,6 +1,17 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getCategories } from "../api";
+import Dropdown from "./Dropdown";
 
-export default function NavBar() {
+const NavBar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories().then(fetchedCategories => {
+      setCategories(fetchedCategories);
+    });
+  }, []);
+
   return (
     <div className="navbar-style">
       <header>
@@ -8,6 +19,13 @@ export default function NavBar() {
           <NavLink to="reviews">Reviews</NavLink>
           <NavLink to="/">Home</NavLink>
           <NavLink to="login-page">Login</NavLink>
+          <Dropdown
+            className="nav-item"
+            label="Categories"
+            items={categories}
+            itemLabel="slug"
+            display="nav-drop"
+          />
         </nav>
       </header>
       <main>
@@ -15,4 +33,6 @@ export default function NavBar() {
       </main>
     </div>
   );
-}
+};
+
+export default NavBar;

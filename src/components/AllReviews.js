@@ -1,18 +1,19 @@
 import { getReviews } from "../api";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const AllReviews = () => {
   const [reviews, setReviews] = useState([{}]);
 
   const [isLoading, setIsLoading] = useState(true);
+  const { category } = useParams();
 
   useEffect(() => {
-    getReviews().then((reviewsFromApi) => {
-      setIsLoading(false);
+    getReviews(category).then(reviewsFromApi => {
       setReviews(reviewsFromApi);
+      setIsLoading(false);
     });
-  }, []);
+  }, [category]);
 
   if (isLoading) {
     return <h1>...All Reviews are Loading</h1>;
@@ -20,7 +21,7 @@ const AllReviews = () => {
   return (
     <div>
       <ul className="itemListWrapper">
-        {reviews.map((review) => {
+        {reviews.map(review => {
           return (
             <li className="list" key={review.review_id}>
               <div className="item-card">

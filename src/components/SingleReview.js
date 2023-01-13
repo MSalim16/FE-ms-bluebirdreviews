@@ -15,6 +15,7 @@ const SingleReview = () => {
   const { user } = useContext(userContext);
 
   const { review_id } = useParams();
+
   const [review, setReviewbyId] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,25 +26,25 @@ const SingleReview = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getReviewbyId(review_id).then((individualReviewFromapi) => {
+    getReviewbyId(review_id).then(individualReviewFromapi => {
       setIsLoading(false);
       setReviewbyId(individualReviewFromapi);
     });
   }, [review_id]);
 
   useEffect(() => {
-    getComments(review_id).then((commentsFromApi) => {
+    getComments(review_id).then(commentsFromApi => {
       setIsLoading(false);
       setComments(commentsFromApi);
     });
   }, [review_id]);
 
   const handleUpVote = () => {
-    setReviewbyId((currReview) => {
+    setReviewbyId(currReview => {
       return { ...currReview, votes: currReview.votes + 1 };
     });
-    patchReviewVotes(review.review_id, 1).catch((err) => {
-      setReviewbyId((currReview) => {
+    patchReviewVotes(review.review_id, 1).catch(err => {
+      setReviewbyId(currReview => {
         return { ...currReview, votes: currReview.votes - 1 };
       });
       setErr("Something went wrong, please try again");
@@ -51,25 +52,25 @@ const SingleReview = () => {
   };
 
   const handleDownVote = () => {
-    setReviewbyId((currReview) => {
+    setReviewbyId(currReview => {
       return { ...currReview, votes: currReview.votes - 1 };
     });
-    patchReviewVotes(review.review_id, -1).catch((err) => {
-      setReviewbyId((currReview) => {
+    patchReviewVotes(review.review_id, -1).catch(err => {
+      setReviewbyId(currReview => {
         return { ...currReview, votes: currReview.votes + 1 };
       });
       setErr("Something went wrong, please try again");
     });
   };
 
-  const handleCommentSubmit = (event) => {
+  const handleCommentSubmit = event => {
     console.log(event);
     event.preventDefault();
     setIsDisabled(true);
     const commentBody = event.target["0"].value;
     postComment(user, review.review_id, commentBody)
-      .then((newComment) => {
-        setComments((currComments) => {
+      .then(newComment => {
+        setComments(currComments => {
           const newComments = [...currComments];
           newComments.unshift(newComment);
           return newComments;
@@ -77,7 +78,7 @@ const SingleReview = () => {
         setIsSubmitted(true);
         setIsDisabled(false);
       })
-      .catch((err) => {
+      .catch(err => {
         if (err.response.data.msg === "User does not exist") {
           setUserExists(false);
         }
@@ -135,23 +136,21 @@ const SingleReview = () => {
         <ul>
           <div className="comments-container">
             {commentContainer}
-            {user === "guest" && (
+            {user.username === "guest" && (
               <p>
                 Please <Link to="/login-page"> log in </Link> before posting a
                 comment
               </p>
             )}
-            {console.log(user)}
           </div>
 
-          {comments.map((comment) => {
+          {comments.map(comment => {
             return (
               <>
                 <li key={comment.comment_id} className="comments-container">
                   <h4>{comment.author}</h4>
                   <p>{comment.body}</p>
-                  <h5>{comment.created_at.slice(0, 10)}</h5>
-                  <h6>{comment.created_at.slice(11, 16)}</h6>
+                  <h5>{new Date(comment.created_at).toLocaleString()}</h5>
                   <h6>{comment.votes}</h6>
                 </li>
               </>
