@@ -10,6 +10,7 @@ import { useState } from "react";
 // pages
 import Home from "./pages/Home/Home";
 import Review from "./pages/Reviews/Review";
+
 import UserContext from "./contexts/User";
 
 // layouts
@@ -23,7 +24,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<NavBar />}>
       <Route index element={<Home />} />
       <Route path="reviews" element={<Review />} />
-      <Route path="reviews/:review_id" element={<SingleReview />} />
+      <Route path="reviews/:category" element={<Review />} />
+      <Route path="reviews/review/:review_id" element={<SingleReview />} />
       <Route path="login-page" element={<LoginPage />} />
     </Route>
   )
