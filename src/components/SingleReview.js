@@ -64,11 +64,12 @@ const SingleReview = () => {
   };
 
   const handleCommentSubmit = event => {
+    console.log(user)
     console.log(event);
     event.preventDefault();
     setIsDisabled(true);
     const commentBody = event.target["0"].value;
-    postComment(user, review.review_id, commentBody)
+    postComment(user.username, review.review_id, commentBody)
       .then(newComment => {
         setComments(currComments => {
           const newComments = [...currComments];
