@@ -20,12 +20,6 @@ export const getReviewbyId = review_id => {
   });
 };
 
-export const getComments = review_id => {
-  return gamesUrl.get(`/reviews/${review_id}/comments`).then(review => {
-    return review.data.comments;
-  });
-};
-
 export const patchReviewVotes = (review_id, increment) => {
   return gamesUrl.patch(`/reviews/${review_id}`, { inc_votes: increment });
 };
@@ -36,20 +30,26 @@ export const getUsers = () => {
   });
 };
 
+export const getComments = review_id => {
+  return gamesUrl.get(`/reviews/${review_id}/comments`).then(review => {
+    return review.data.comments;
+  });
+};
+
 export const postComment = (user, review_id, commentBody) => {
   return gamesUrl
-    .post(`reviews/${review_id}/comments`, {
+    .post(`/reviews/${review_id}/comments`, {
       username: user,
       body: commentBody,
     })
     .then(comment => {
+      console.log(comment);
       return comment.data.comment;
     });
 };
 
 export const getCategories = () => {
   return gamesUrl.get("/categories").then(categories => {
-    console.log(categories.data.categories);
     return categories.data.categories;
   });
 };

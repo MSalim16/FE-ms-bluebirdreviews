@@ -11,7 +11,7 @@ const Header = () => {
   const { user } = useContext(userContext);
 
   useEffect(() => {
-    getUsers().then((usersFromApi) => {
+    getUsers().then(usersFromApi => {
       setIsLoading(false);
       setUsers(usersFromApi);
     });
@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <>
       <header className="Header">
-        <a href="http://localhost:3000/">
+        <a href="https://msbluebirdreviews.netlify.app/">
           <img className="twitterlogo" src={TwitterLogo}></img>
         </a>
 
