@@ -53,3 +53,10 @@ export const getCategories = () => {
     return categories.data.categories;
   });
 };
+export const getReviewsByQueries = (review, sort_by, order) => {
+  return gamesUrl
+    .get(`/reviews`, { params: { review, sort_by, order } })
+    .then(({ data }) => {
+      return data.reviews;
+    });
+};
