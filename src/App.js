@@ -24,7 +24,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<NavBar />}>
       <Route index element={<Home />} />
       <Route path="reviews" element={<Review />} />
-      <Route path="reviews/:category" element={<Review />} />
+      <Route path="categories/:category" element={<Review />} />
       <Route path="reviews/review/:review_id" element={<SingleReview />} />
       <Route path="login-page" element={<LoginPage />} />
     </Route>
@@ -38,12 +38,14 @@ function App() {
     avatar_url: "https://www.computerhope.com/jargon/g/guest-user.jpg",
   });
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <div>
-        <Header />
-        <RouterProvider router={router} />
-      </div>
-    </UserContext.Provider>
+    <div className="app">
+      <UserContext.Provider value={{ user, setUser }}>
+        <div>
+          <Header />
+          <RouterProvider router={router} />
+        </div>
+      </UserContext.Provider>
+    </div>
   );
 }
 

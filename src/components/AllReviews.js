@@ -1,6 +1,7 @@
 import { getReviews } from "../api";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import SortandOrderReviews from "./SortandOrderReviews";
 
 const AllReviews = () => {
   const [reviews, setReviews] = useState([{}]);
@@ -20,6 +21,7 @@ const AllReviews = () => {
   }
   return (
     <div>
+      <SortandOrderReviews setReviews={setReviews} />
       <ul className="itemListWrapper">
         {reviews.map(review => {
           return (

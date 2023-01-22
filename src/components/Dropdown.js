@@ -24,7 +24,7 @@ function Dropdown({ label, items, itemLabel, display }) {
             return (
               <Link
                 key={`${item[itemLabel]}${index}`}
-                to={`/reviews/${item[itemLabel]}`}
+                to={`/categories/${item[itemLabel]}`}
                 onClick={() => setDropdownVisible(false)}
               >
                 <div className="dropdown-item">{item[itemLabel]}</div>
