@@ -14,8 +14,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getUsers().then((usersFromApi) => {
-      console.log(setUser);
+    getUsers().then(usersFromApi => {
       setIsLoading(false);
       setUsers(usersFromApi);
     });
@@ -42,7 +41,7 @@ const LoginPage = () => {
 
   return (
     <div className="users">
-      {users.map((user) => {
+      {users.map(user => {
         return (
           <button
             id={user.username}
@@ -53,7 +52,12 @@ const LoginPage = () => {
             key={user.username}
           >
             {"@" + user.username}
-            <img src={user.avatar_url} id={user.username} alt={user.username} />
+            <img
+              className="login-images"
+              src={user.avatar_url}
+              id={user.username}
+              alt={user.username}
+            />
           </button>
         );
       })}

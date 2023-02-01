@@ -1,5 +1,7 @@
 import React from "react";
 
+import { TbArrowsSort } from "react-icons/tb";
+
 const SortByq = ({ sortByValue, setSortByValue, setSearchTerm }) => {
   const handleChange = e => {
     setSearchTerm({ sort_by: e.target.value });
@@ -7,9 +9,9 @@ const SortByq = ({ sortByValue, setSortByValue, setSearchTerm }) => {
   };
 
   return (
-    <div>
+    <div className="sort-container">
       <label className="query-options">
-        <h3 className="sort-by">sort by:</h3>
+        <TbArrowsSort size={30} />
         <select
           className="order-btn"
           onChange={handleChange}

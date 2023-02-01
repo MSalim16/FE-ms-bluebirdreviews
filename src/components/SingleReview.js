@@ -4,6 +4,7 @@ import {
   patchReviewVotes,
   getComments,
   postComment,
+  deleteComment,
 } from "../api";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
@@ -23,6 +24,9 @@ const SingleReview = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [userExists, setUserExists] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [disableLikeBtn, setDisableLikeBtn] = useState(false);
+  const [disableDislikeBtn, setDisableDislikeBtn] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,6 +44,8 @@ const SingleReview = () => {
   }, [review_id]);
 
   const handleUpVote = () => {
+    setDisableLikeBtn(curr => !curr);
+    setDisableDislikeBtn(false);
     setReviewbyId(currReview => {
       return { ...currReview, votes: currReview.votes + 1 };
     });
@@ -52,6 +58,9 @@ const SingleReview = () => {
   };
 
   const handleDownVote = () => {
+    setDisableDislikeBtn(curr => !curr);
+    setDisableLikeBtn(false);
+    console.log("shud be disabled");
     setReviewbyId(currReview => {
       return { ...currReview, votes: currReview.votes - 1 };
     });
@@ -64,11 +73,10 @@ const SingleReview = () => {
   };
 
   const handleCommentSubmit = event => {
-    console.log(event);
     event.preventDefault();
     setIsDisabled(true);
     const commentBody = event.target["0"].value;
-    postComment(user, review.review_id, commentBody)
+    postComment(user.username, review.review_id, commentBody)
       .then(newComment => {
         setComments(currComments => {
           const newComments = [...currComments];
@@ -86,15 +94,22 @@ const SingleReview = () => {
   };
 
   const commentForm = (
-    <div>
+    <div className="comment-form">
       <h3>Add new comment</h3>
       <form
         disabled={isDisabled}
         onSubmit={handleCommentSubmit}
         id="new-comment"
       >
-        <textarea form="new-comment" placeholder="new comment..." required />
-        <button type="submit">Submit</button>
+        <textarea
+          style={{ color: "black" }}
+          form="new-comment"
+          placeholder="new comment..."
+          required
+        />
+        <button style={{ color: "black" }} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
@@ -110,6 +125,22 @@ const SingleReview = () => {
       ))
     : (commentContainer = commentForm);
 
+  const handleDelete = event => {
+    console.log(event.target.parentElement.id);
+    event.preventDefault();
+    const commentId = event.target.parentElement.id;
+    deleteComment(commentId).then(() => {
+      setComments(currComments => {
+        const newComments = currComments.filter(comment => {
+          return comment.comment_id !== commentId;
+        });
+
+        return newComments;
+      });
+      setIsDeleted(true);
+    });
+  };
+
   if (err) return <p>{err}</p>;
 
   if (isLoading) {
@@ -123,9 +154,17 @@ const SingleReview = () => {
         <p className="item-description">{review.review_body}</p>
 
         <div className="votes-container">
-          <button onClick={handleUpVote}>❤️</button>
+          <button
+            className="heartred"
+            disabled={disableLikeBtn}
+            onClick={handleUpVote}
+          >
+            ❤️
+          </button>
           <p>votes: {review.votes}</p>
-          <button onClick={handleDownVote}>🖤</button>
+          <button disabled={disableDislikeBtn} onClick={handleDownVote}>
+            🖤
+          </button>
         </div>
 
         <h4 className="item-createdby">Author: @{review.owner}</h4>
@@ -142,16 +181,26 @@ const SingleReview = () => {
                 comment
               </p>
             )}
+            {isDeleted && <li>Comment deleted</li>}
           </div>
 
           {comments.map(comment => {
             return (
               <>
-                <li key={comment.comment_id} className="comments-container">
+                <li
+                  key={comment.comment_id}
+                  id={comment.comment_id}
+                  className="comments-container"
+                >
                   <h4>{comment.author}</h4>
                   <p>{comment.body}</p>
                   <h5>{new Date(comment.created_at).toLocaleString()}</h5>
                   <h6>{comment.votes}</h6>
+                  {comment.author === user.username && (
+                    <button style={{ color: "black" }} onClick={handleDelete}>
+                      delete
+                    </button>
+                  )}
                 </li>
               </>
             );
