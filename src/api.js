@@ -60,3 +60,7 @@ export const getReviewsByQueries = (review, sort_by, order) => {
       return data.reviews;
     });
 };
+
+export const deleteComment = commentId => {
+  return gamesUrl.delete(`comments/${commentId}`);
+};

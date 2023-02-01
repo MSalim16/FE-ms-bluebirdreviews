@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { getReviewsByQueries } from "../api";
 import SortBy from "./SortByq";
+import OrderBy from "./Orderby";
 
 export const SortandOrderReviews = ({ setReviews }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,6 +12,7 @@ export const SortandOrderReviews = ({ setReviews }) => {
     sort_by: "",
     order: "",
   });
+
   const { review } = useParams();
 
   useEffect(() => {
@@ -30,6 +32,12 @@ export const SortandOrderReviews = ({ setReviews }) => {
         sortByValue={sortByValue}
         setSortByValue={setSortByValue}
         setSearchTerm={setSearchTerm}
+      />
+      <OrderBy
+        orderByValue={orderByValue}
+        setOrderByValue={setOrderByValue}
+        setSearchTerm={setSearchTerm}
+        sortByValue={sortByValue}
       />
     </>
   );

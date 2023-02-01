@@ -30,7 +30,7 @@ const AllReviews = () => {
                 <h2 className="item-name">{review.title}</h2>
                 <img className="item-img" src={review.review_img_url}></img>
 
-                <Link to={`/reviews/review/${review.review_id}`}>
+                <Link to={`/reviews/${review.review_id}`}>
                   <div className="read-more">
                     <em>...</em>
                     <strong>read more</strong>

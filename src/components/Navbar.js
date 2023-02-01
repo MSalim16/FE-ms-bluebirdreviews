@@ -2,9 +2,18 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getCategories } from "../api";
 import Dropdown from "./Dropdown";
+import UserContext from "../contexts/User";
+import { useContext } from "react";
+import {
+  BsListUl,
+  BsFillHouseFill,
+  BsBoxArrowInRight,
+  BsPeopleFill,
+} from "react-icons/bs";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getCategories().then(fetchedCategories => {
@@ -16,16 +25,27 @@ const NavBar = () => {
     <div className="navbar-style">
       <header>
         <nav>
-          <NavLink to="reviews">Reviews</NavLink>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="login-page">Login</NavLink>
+          <NavLink to="/">
+            <BsFillHouseFill size={30} />
+          </NavLink>
+
           <Dropdown
             className="nav-item"
-            label="Categories"
+            label={<BsListUl size={30} />}
             items={categories}
             itemLabel="slug"
             display="nav-drop"
           />
+          {user.username !== "guest" && (
+            <NavLink to="login-page">
+              <BsPeopleFill size={30} />
+            </NavLink>
+          )}
+          {user.username === "guest" && (
+            <NavLink to="login-page">
+              <BsBoxArrowInRight size={30} />
+            </NavLink>
+          )}
         </nav>
       </header>
       <main>

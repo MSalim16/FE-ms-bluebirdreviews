@@ -22,10 +22,9 @@ import SingleReview from "./components/SingleReview";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<NavBar />}>
-      <Route index element={<Home />} />
-      <Route path="reviews" element={<Review />} />
+      <Route index element={<Review />} />
       <Route path="categories/:category" element={<Review />} />
-      <Route path="reviews/review/:review_id" element={<SingleReview />} />
+      <Route path="reviews/:review_id" element={<SingleReview />} />
       <Route path="login-page" element={<LoginPage />} />
     </Route>
   )
