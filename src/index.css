@@ -6,7 +6,7 @@
 body {
   margin: 0;
   background: var(--secondary);
-  height: 1920px;
+  height: 100vh;
   font-family: "Robotto";
   background-color: #15202b;
 }
@@ -28,16 +28,13 @@ code {
   background-color: #15202b;
 }
 
-header nav {
+nav {
   display: flex;
-  margin-left: 35%;
-  justify-content: center;
-  width: 500px;
+  flex-direction: row;
   margin-bottom: 40px;
   margin-top: 20px;
-  border: 2px;
-  border-radius: 5px;
-  border-style: solid;
+  position: relative;
+  justify-content: center;
 }
 
 .dropbtn {
@@ -167,17 +164,43 @@ header nav {
   width: 100px;
   border: 2px;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: 1rem;
   border-color: white;
   margin-left: 10px;
+}
+
+.avatar-img {
+  height: 60px;
+  width: 60px;
+  border: 3px;
+  border-style: solid;
+  border-radius: 10rem;
+  border-color: rgb(0, 183, 255);
+  background-color: white;
+  margin-left: 10px;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+}
+
+.author {
+  font-size: 20px;
+  margin-top: 1rem;
+}
+
+.twitter-handle {
+  display: flex;
+  flex-direction: row;
+  margin-left: -5rem;
 }
 
 .item-name {
   margin-left: 10px;
 }
 
-.read-more {
-  margin-left: 10px;
+.tweet {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5rem;
 }
 .item-card {
   display: flex;
