@@ -12,6 +12,7 @@ import { FaRegComment, FaRegHeart } from "react-icons/fa";
 
 import { useContext } from "react";
 import userContext from "../contexts/User";
+import { fontFamily } from "styled-system";
 
 const SingleReview = () => {
   const { user } = useContext(userContext);
@@ -28,6 +29,7 @@ const SingleReview = () => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [disableLikeBtn, setDisableLikeBtn] = useState(false);
   const [disableDislikeBtn, setDisableDislikeBtn] = useState(false);
+  const [isAlertVisible, setIsAlertVisible] = React.useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -74,6 +76,7 @@ const SingleReview = () => {
   };
 
   const handleCommentSubmit = event => {
+    setIsAlertVisible(true);
     event.preventDefault();
     setIsDisabled(true);
     const commentBody = event.target["0"].value;
@@ -96,21 +99,23 @@ const SingleReview = () => {
 
   const commentForm = (
     <div className="comment-form">
-      <h3>Add new comment</h3>
+      <h5>How did you find the game?</h5>
       <form
         disabled={isDisabled}
         onSubmit={handleCommentSubmit}
         id="new-comment"
       >
-        <textarea
-          style={{ color: "black" }}
-          form="new-comment"
-          placeholder="new comment..."
-          required
-        />
-        <button style={{ color: "black" }} type="submit">
-          Submit
-        </button>
+        <div className="comment-form">
+          <textarea
+            style={{ color: "black" }}
+            form="new-comment"
+            placeholder="Reply to this review"
+            required
+          />
+          <button className="post-btn" type="submit">
+            Post
+          </button>
+        </div>
       </form>
     </div>
   );
@@ -121,7 +126,7 @@ const SingleReview = () => {
     ? (commentContainer = (
         <div>
           {commentForm}
-          <p>comment added!</p>
+          <p>Your comment has been added!</p>
         </div>
       ))
     : (commentContainer = commentForm);
@@ -219,7 +224,7 @@ const SingleReview = () => {
               >
                 ❤️
               </button>
-              <p>votes: {review.votes}</p>
+
               <button disabled={disableDislikeBtn} onClick={handleDownVote}>
                 🖤
               </button>
@@ -227,12 +232,12 @@ const SingleReview = () => {
           </div>
         </div>
         <div>
-          <h3>Comments</h3>
           <ul>
+            <h3>Comments</h3>
             <div className="comments-container">
               {commentContainer}
               {user.username === "guest" && (
-                <p>
+                <p className="login-link">
                   Please <Link to="/login-page"> log in </Link> before posting a
                   comment
                 </p>
