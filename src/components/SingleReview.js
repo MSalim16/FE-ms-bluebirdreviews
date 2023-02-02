@@ -150,102 +150,109 @@ const SingleReview = () => {
   return (
     <>
       <div className="single-item-card">
-        {console.log(review.owner)}
-        <div className="twitter-handlse">
-          {review.owner === "cooljmessy" && (
-            <img
-              className="avatar-img"
-              src="https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/250?cb=20170730171002"
-            ></img>
-          )}
-          {review.owner === "tickle122" && (
-            <img
-              className="avatar-img"
-              src="https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953"
-            ></img>
-          )}
-          {review.owner === "jessjelly" && (
-            <img
-              className="avatar-img"
-              src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
-            ></img>
-          )}
-          {review.owner === "weegembump" && (
-            <img
-              className="avatar-img"
-              src="https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553"
-            ></img>
-          )}
-          {review.owner === "grumpy19" && (
-            <img
-              className="avatar-img"
-              src="https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"
-            ></img>
-          )}
-          {review.owner === "happyamy2016" && (
-            <img
-              className="avatar-img"
-              src="https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729"
-            ></img>
-          )}
-          <h1 className="author"> @{review.owner}</h1>
-        </div>
-
-        <p className="item-description">{review.review_body}</p>
-
-        <div className="votes-container">
-          <button
-            className="heartred"
-            disabled={disableLikeBtn}
-            onClick={handleUpVote}
-          >
-            ❤️
-          </button>
-          <p>votes: {review.votes}</p>
-          <button disabled={disableDislikeBtn} onClick={handleDownVote}>
-            🖤
-          </button>
-        </div>
-
-        <h4 className="item-createdby">Author: @{review.owner}</h4>
-        <h5 className="item-createdat">Time: {review.created_at}</h5>
-      </div>
-      <div>
-        <h3>Comments</h3>
-        <ul>
-          <div className="comments-container">
-            {commentContainer}
-            {user.username === "guest" && (
-              <p>
-                Please <Link to="/login-page"> log in </Link> before posting a
-                comment
-              </p>
+        <div className="single-items">
+          {console.log(review.owner)}
+          <div className="twitter-handle1">
+            {review.owner === "cooljmessy" && (
+              <img
+                className="avatar-img"
+                src="https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/250?cb=20170730171002"
+              ></img>
             )}
-            {isDeleted && <li>Comment deleted</li>}
+            {review.owner === "tickle122" && (
+              <img
+                className="avatar-img"
+                src="https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953"
+              ></img>
+            )}
+            {review.owner === "jessjelly" && (
+              <img
+                className="avatar-img"
+                src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
+              ></img>
+            )}
+            {review.owner === "weegembump" && (
+              <img
+                className="avatar-img"
+                src="https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553"
+              ></img>
+            )}
+            {review.owner === "grumpy19" && (
+              <img
+                className="avatar-img"
+                src="https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"
+              ></img>
+            )}
+            {review.owner === "happyamy2016" && (
+              <img
+                className="avatar-img"
+                src="https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729"
+              ></img>
+            )}
+            <h1 className="author"> @{review.owner}</h1>
+            <h5 className="createdat">
+              {" "}
+              {new Date(review.created_at).toLocaleString()}{" "}
+            </h5>
+          </div>
+          <h3 className="item-name">{review.title}</h3>
+
+          <p className="item-description">{review.review_body}</p>
+
+          <div className="votes-container">
+            <button
+              className="heartred"
+              disabled={disableLikeBtn}
+              onClick={handleUpVote}
+            >
+              ❤️
+            </button>
+            <p>votes: {review.votes}</p>
+            <button disabled={disableDislikeBtn} onClick={handleDownVote}>
+              🖤
+            </button>
           </div>
 
-          {comments.map(comment => {
-            return (
-              <>
-                <li
-                  key={comment.comment_id}
-                  id={comment.comment_id}
-                  className="comments-container"
-                >
-                  <h4>{comment.author}</h4>
-                  <p>{comment.body}</p>
-                  <h5>{new Date(comment.created_at).toLocaleString()}</h5>
-                  <h6>{comment.votes}</h6>
-                  {comment.author === user.username && (
-                    <button style={{ color: "black" }} onClick={handleDelete}>
-                      delete
-                    </button>
-                  )}
-                </li>
-              </>
-            );
-          })}
-        </ul>
+          <h4 className="item-createdby">Author: @{review.owner}</h4>
+          <h5 className="item-createdat">Time: {review.created_at}</h5>
+        </div>
+        <div>
+          <h3>Comments</h3>
+          <ul>
+            <div className="comments-container">
+              {commentContainer}
+              {user.username === "guest" && (
+                <p>
+                  Please <Link to="/login-page"> log in </Link> before posting a
+                  comment
+                </p>
+              )}
+              {isDeleted && <li>Comment deleted</li>}
+            </div>
+
+            {comments.map(comment => {
+              return (
+                <>
+                  <li
+                    key={comment.comment_id}
+                    id={comment.comment_id}
+                    className="comments-container"
+                  >
+                    <h4>{comment.author}</h4>
+                    <p>{comment.body}</p>
+                    <h5>{new Date(comment.created_at).toLocaleString()}</h5>
+                    <h6>{comment.votes}</h6>
+                    {comment.author === user.username && (
+                      <button style={{ color: "black" }} onClick={handleDelete}>
+                        delete
+                      </button>
+                    )}
+                  </li>
+                </>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </>
   );

@@ -61,22 +61,24 @@ const AllReviews = () => {
                         src="https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553"
                       ></img>
                     )}
-
                     {review.owner === "grumpy19" && (
                       <img
                         className="avatar-img"
                         src="https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"
                       ></img>
                     )}
-
                     {review.owner === "happyamy2016" && (
                       <img
                         className="avatar-img"
                         src="https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729"
                       ></img>
                     )}
-
                     <h1 className="author"> @{review.owner}</h1>
+                    {console.log(review)}
+                    <h5 className="createdat">
+                      {" "}
+                      {new Date(review.created_at).toLocaleString()}{" "}
+                    </h5>
                   </div>
                   <h3 className="item-name">{review.title}</h3>
                   <img className="item-img" src={review.review_img_url}></img>
