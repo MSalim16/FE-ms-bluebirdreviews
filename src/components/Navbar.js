@@ -31,7 +31,7 @@ const NavBar = () => {
 
           <Dropdown
             className="nav-item"
-            label={<BsListUl size={30} />}
+            label={<BsListUl className="categoryicon" size={30} />}
             items={categories}
             itemLabel="slug"
             display="nav-drop"

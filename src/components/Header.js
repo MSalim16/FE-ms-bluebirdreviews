@@ -4,7 +4,6 @@ import TwitterLogo from "../images/twitter.png";
 import { getUsers } from "../api";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Tooltip, IconButton, DeleteIcon } from "react-tooltip";
 
 import "react-tooltip/dist/react-tooltip.css";
 
