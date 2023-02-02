@@ -8,6 +8,7 @@ import {
 } from "../api";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { FaRegComment, FaRegHeart } from "react-icons/fa";
 
 import { useContext } from "react";
 import userContext from "../contexts/User";
@@ -195,26 +196,35 @@ const SingleReview = () => {
               {new Date(review.created_at).toLocaleString()}{" "}
             </h5>
           </div>
-          <h3 className="item-name">{review.title}</h3>
+          <div className="tweet">
+            <h3 className="item-name">{review.title}</h3>
 
-          <p className="item-description">{review.review_body}</p>
-
-          <div className="votes-container">
-            <button
-              className="heartred"
-              disabled={disableLikeBtn}
-              onClick={handleUpVote}
-            >
-              ❤️
-            </button>
-            <p>votes: {review.votes}</p>
-            <button disabled={disableDislikeBtn} onClick={handleDownVote}>
-              🖤
-            </button>
+            <p className="item-description">{review.review_body}</p>
+            <img className="item-img" src={review.review_img_url}></img>
+            <div className="like-comments">
+              <div className="comment">
+                <FaRegComment size={15} />
+                <span className="comment-text">{review.comment_count}</span>
+              </div>
+              <div className="like">
+                <FaRegHeart size={15} />
+                <span className="comment-text">{review.votes}</span>
+              </div>
+            </div>
+            <div className="votes-container">
+              <button
+                className="heartred"
+                disabled={disableLikeBtn}
+                onClick={handleUpVote}
+              >
+                ❤️
+              </button>
+              <p>votes: {review.votes}</p>
+              <button disabled={disableDislikeBtn} onClick={handleDownVote}>
+                🖤
+              </button>
+            </div>
           </div>
-
-          <h4 className="item-createdby">Author: @{review.owner}</h4>
-          <h5 className="item-createdat">Time: {review.created_at}</h5>
         </div>
         <div>
           <h3>Comments</h3>
