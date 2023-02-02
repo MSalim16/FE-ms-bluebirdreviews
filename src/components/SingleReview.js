@@ -149,8 +149,48 @@ const SingleReview = () => {
 
   return (
     <>
-      <div className="singlereview">
-        <h2 className="item-name">{review.title}</h2>
+      <div className="single-item-card">
+        {console.log(review.owner)}
+        <div className="twitter-handlse">
+          {review.owner === "cooljmessy" && (
+            <img
+              className="avatar-img"
+              src="https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/250?cb=20170730171002"
+            ></img>
+          )}
+          {review.owner === "tickle122" && (
+            <img
+              className="avatar-img"
+              src="https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953"
+            ></img>
+          )}
+          {review.owner === "jessjelly" && (
+            <img
+              className="avatar-img"
+              src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
+            ></img>
+          )}
+          {review.owner === "weegembump" && (
+            <img
+              className="avatar-img"
+              src="https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553"
+            ></img>
+          )}
+          {review.owner === "grumpy19" && (
+            <img
+              className="avatar-img"
+              src="https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"
+            ></img>
+          )}
+          {review.owner === "happyamy2016" && (
+            <img
+              className="avatar-img"
+              src="https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729"
+            ></img>
+          )}
+          <h1 className="author"> @{review.owner}</h1>
+        </div>
+
         <p className="item-description">{review.review_body}</p>
 
         <div className="votes-container">

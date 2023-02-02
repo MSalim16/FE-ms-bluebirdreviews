@@ -160,13 +160,13 @@ nav {
 }
 
 .item-img {
-  height: 100px;
-  width: 100px;
+  height: 500px;
   border: 2px;
   border-style: solid;
   border-radius: 1rem;
   border-color: white;
   margin-left: 10px;
+  margin-right: 1rem;
 }
 
 .avatar-img {
@@ -194,32 +194,49 @@ nav {
 }
 
 .item-name {
+  margin-top: -2rem;
   margin-left: 10px;
 }
 
 .tweet {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 5rem;
 }
 .item-card {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  margin-left: -40px;
   gap: 10px;
-  border: 2px;
-  border-radius: 5px;
+  border: 1px;
+  border-radius: 2px;
   border-style: solid;
 }
 
-.itemListWrapper {
+.single-item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px;
+  border-radius: 2px;
+  border-style: solid;
+}
+
+.item-card:hover {
+  background-color: #1c2732;
+}
+
+nav a :hover {
+  background-color: #1c2732;
+}
+
+.categoryicon:hover {
+  background-color: #1c2732;
+}
+
+.list {
   list-style: none;
-}
-
-.singlereview {
-  border-radius: 3px;
-  border-style: solid;
+  margin-left: 12%;
+  margin-right: 12%;
 }
 
 .avatar {
@@ -284,33 +301,61 @@ nav {
   display: flex;
   flex-direction: row;
   margin-top: -2rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 .order-btn1 {
   background-color: #15202b;
-  border: none;
   border-radius: 15px;
   border-style: solid;
+  border-color: white;
   width: 5rem;
-  margin-left: 1rem;
 }
 
-.order-btn1:active {
+.order-btn1:hover {
+  background-color: #1c2732;
   scale: 110%;
 }
 
+.order-btn1:active {
+  scale: 100%;
+}
+
 .order-btn2:active {
+  scale: 100%;
+}
+
+.order-btn2:hover {
+  background-color: #1c2732;
   scale: 110%;
 }
 .order-btn2 {
   background-color: #15202b;
-  border-color: white;
   border-radius: 15px;
   border-style: solid;
+  border-color: white;
   width: 5rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
+.like-comments {
+  margin-top: 1rem;
+  display: flex;
+  gap: 16px;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.comment-text {
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+.singlereview {
+  border: white;
+  border-style: solid;
+}
 .uparrow {
   pointer-events: none;
 }
