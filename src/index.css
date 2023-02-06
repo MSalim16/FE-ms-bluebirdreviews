@@ -237,6 +237,8 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px white;
+  border-style: solid;
 }
 
 .item-card:hover {
@@ -288,6 +290,10 @@ nav a :hover {
 
 .dissapear {
   visibility: hidden;
+}
+
+textarea {
+  max-width: 1200px;
 }
 
 .comment-form {
@@ -399,6 +405,10 @@ nav a :hover {
   font-size: 15px;
 }
 
+.comments-container {
+  border: 1px white;
+  border-style: solid;
+}
 .singlereview {
   border: white;
   border-style: solid;
@@ -416,33 +426,7 @@ nav a :hover {
   color: #00aeff;
 }
 
-@media (max-width: 430px) {
-  .Header {
-    display: flex;
-    flex-direction: row;
-    font-size: 6px;
-    justify-content: space-between;
-    border: 2px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: white;
-  }
-
-  .twitterlogo {
-    height: 50px;
-    width: 50px;
-  }
-
-  .avatar {
-    border: 5px solid #00aeff;
-    border-radius: 50%;
-    background-color: rgb(255, 255, 255);
-    width: 50px;
-    height: 50px;
-  }
-}
-
-@media (max-width: 550px) {
+@media only screen and (max-width: 550px) {
   .Header {
     display: flex;
     flex-direction: row;
@@ -452,6 +436,33 @@ nav a :hover {
     border-radius: 5px;
     border-style: solid;
     border-color: white;
+  }
+
+  .item-card {
+    margin-left: -1rem;
+    margin-right: -2rem;
+  }
+
+  .item-name {
+    font-size: 15px;
+  }
+
+  .twitter-handle {
+    font-size: 15px;
+  }
+
+  .author {
+    font-size: 18px;
+  }
+
+  .item-img {
+    height: 150px;
+    border: 2px;
+    border-style: solid;
+    border-radius: 1rem;
+    border-color: white;
+    margin-left: 10px;
+    margin-right: 1rem;
   }
 
   .twitterlogo {
@@ -473,8 +484,7 @@ nav a :hover {
     height: 50px;
   }
 }
-
-@media (max-width: 650px) {
+@media only screen and(max-width: 650px) {
   .Header {
     display: flex;
     flex-direction: row;
@@ -504,15 +514,52 @@ nav a :hover {
     width: 50px;
     height: 50px;
   }
+
+  .item-img {
+    height: 150px;
+    border: 2px;
+    border-style: solid;
+    border-radius: 1rem;
+    border-color: white;
+    margin-left: 10px;
+    margin-right: 1rem;
+  }
 }
 
-@media (max-width: 1250px) {
+@media only screen and (max-width: 1250px) {
   header nav {
     display: flex;
     gap: 16px;
     justify-content: space-around;
     max-width: 1200px;
     margin-bottom: 40px;
+  }
+
+  .item-card {
+    margin-left: -1rem;
+    margin-right: -2rem;
+  }
+
+  .item-name {
+    font-size: 15px;
+  }
+
+  .twitter-handle {
+    font-size: 15px;
+  }
+
+  .author {
+    font-size: 18px;
+  }
+
+  .item-img {
+    height: 250px;
+    border: 2px;
+    border-style: solid;
+    border-radius: 1rem;
+    border-color: white;
+    margin-left: 10px;
+    margin-right: 1rem;
   }
 }
 @media (max-width: 1920px) {

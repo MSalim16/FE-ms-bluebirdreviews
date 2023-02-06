@@ -107,10 +107,13 @@ const SingleReview = () => {
       >
         <div className="comment-form">
           <textarea
+            className="textarea"
+            rows="3"
             style={{ color: "black" }}
             form="new-comment"
             placeholder="Reply to this review"
             required
+            spellCheck="false"
           />
           <button className="post-btn" type="submit">
             Post
@@ -233,26 +236,25 @@ const SingleReview = () => {
         </div>
         <div>
           <ul>
-            <h3>Comments</h3>
             <div className="comments-container">
-              {commentContainer}
-              {user.username === "guest" && (
-                <p className="login-link">
-                  Please <Link to="/login-page"> log in </Link> before posting a
-                  comment
-                </p>
-              )}
-              {isDeleted && <li>Comment deleted</li>}
+              <div>
+                <h3>Comments</h3>
+
+                {commentContainer}
+                {user.username === "guest" && (
+                  <p className="login-link">
+                    Please <Link to="/login-page"> log in </Link> before posting
+                    a comment
+                  </p>
+                )}
+                {isDeleted && <li>Comment deleted</li>}
+              </div>
             </div>
 
             {comments.map(comment => {
               return (
                 <>
-                  <li
-                    key={comment.comment_id}
-                    id={comment.comment_id}
-                    className="comments-container"
-                  >
+                  <li key={comment.comment_id} id={comment.comment_id}>
                     <h4>{comment.author}</h4>
                     <p>{comment.body}</p>
                     <h5>{new Date(comment.created_at).toLocaleString()}</h5>

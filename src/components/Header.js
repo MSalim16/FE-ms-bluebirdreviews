@@ -30,7 +30,7 @@ const Header = () => {
           <img className="twitterlogo" src={TwitterLogo}></img>
         </a>
 
-        <h1>Blue Bird Reviews</h1>
+        <h1 className="twittertext">Blue Bird Reviews</h1>
 
         <div className="loggedin">
           <img className="avatar" src={`${user.avatar_url}`}></img>
