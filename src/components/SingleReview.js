@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import {
   getReviewbyId,
@@ -8,7 +10,7 @@ import {
 } from "../api";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { FaRegComment, FaRegHeart } from "react-icons/fa";
+import { FaRegComment, FaRegHeart, FaTrashAlt } from "react-icons/fa";
 
 import { useContext } from "react";
 import userContext from "../contexts/User";
@@ -160,7 +162,6 @@ const SingleReview = () => {
     <>
       <div className="single-item-card">
         <div className="single-items">
-          {console.log(review.owner)}
           <div className="twitter-handle1">
             {review.owner === "cooljmessy" && (
               <img
@@ -254,16 +255,66 @@ const SingleReview = () => {
             {comments.map(comment => {
               return (
                 <>
-                  <li key={comment.comment_id} id={comment.comment_id}>
-                    <h4>{comment.author}</h4>
-                    <p>{comment.body}</p>
-                    <h5>{new Date(comment.created_at).toLocaleString()}</h5>
-                    <h6>{comment.votes}</h6>
+                  <li
+                    className="comment-list"
+                    key={comment.comment_id}
+                    id={comment.comment_id}
+                  >
+                    <div className="twitter-handle1">
+                      {comment.author === "cooljmessy" && (
+                        <img
+                          className="avatar-img"
+                          src="https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/250?cb=20170730171002"
+                        ></img>
+                      )}
+                      {comment.author === "tickle122" && (
+                        <img
+                          className="avatar-img"
+                          src="https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953"
+                        ></img>
+                      )}
+                      {comment.author === "jessjelly" && (
+                        <img
+                          className="avatar-img"
+                          src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
+                        ></img>
+                      )}
+                      {comment.author === "weegembump" && (
+                        <img
+                          className="avatar-img"
+                          src="https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553"
+                        ></img>
+                      )}
+                      {comment.author === "grumpy19" && (
+                        <img
+                          className="avatar-img"
+                          src="https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"
+                        ></img>
+                      )}
+                      {comment.author === "happyamy2016" && (
+                        <img
+                          className="avatar-img"
+                          src="https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729"
+                        ></img>
+                      )}
+                      <h1 className="author"> @{comment.author}</h1>
+                      <h5 className="createdat">
+                        {" "}
+                        {new Date(review.created_at).toLocaleString()}{" "}
+                      </h5>
+                    </div>
+                    <p className="comment-body">{comment.body}</p>
                     {comment.author === user.username && (
-                      <button style={{ color: "black" }} onClick={handleDelete}>
-                        delete
+                      <button className="delete-button" onClick={handleDelete}>
+                        <FaTrashAlt size={30} className="delete-icon" />
                       </button>
                     )}
+                    <div className="like-comments">
+                      <div className="like">
+                        <FaRegHeart size={15} />
+                        <span className="comment-text">{comment.votes}</span>
+                      </div>
+                    </div>
                   </li>
                 </>
               );

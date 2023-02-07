@@ -275,9 +275,20 @@ nav a :hover {
   width: 5rem;
   border: 2px solid;
   color: white;
-  float: left;
   border-radius: 15px;
   margin-top: 1rem;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.5rem 0;
+  margin: 0.5rem 1rem;
+  width: 11rem;
+  color: white;
+  border: 2px solid white;
+}
+
+.votes-container {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .post-btn:hover {
@@ -422,7 +433,43 @@ textarea {
   color: #00aeff;
 }
 
-@media only screen and (max-width: 550px) {
+li {
+  list-style: none;
+}
+
+.comment-list {
+  border: 1px solid;
+  margin-left: 0;
+}
+
+.comments-container {
+  border-bottom: 1px solid;
+}
+
+.delete-button {
+  background: transparent;
+  border: none;
+  float: right;
+  margin-top: -3rem;
+}
+
+.delete-button:hover {
+  scale: 130%;
+}
+
+.delete-button:active {
+  scale: 100%;
+}
+.delete-icon {
+  pointer-events: none;
+}
+
+.comment-body {
+  margin-left: 5rem;
+  margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 450px) {
   .Header {
     display: flex;
     flex-direction: row;
@@ -434,6 +481,9 @@ textarea {
     border-color: white;
   }
 
+  .twittertext {
+    margin-top: 1.5rem;
+  }
   .item-card {
     margin-left: -1rem;
     margin-right: -2rem;
@@ -462,8 +512,9 @@ textarea {
   }
 
   .twitterlogo {
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
+    margin-top: 0.2rem;
   }
   header nav {
     display: flex;
@@ -473,13 +524,131 @@ textarea {
     margin-bottom: 40px;
   }
   .avatar {
-    border: 5px solid #00aeff;
+    border: 5px solid #ffffff;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    margin-top: -2px;
+  }
+
+  .logas {
+    font-size: 9px;
+    margin-top: 18px;
+  }
+
+  .order-btn {
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .single-item-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px;
+    border-radius: 2px;
+    border-style: solid;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 2rem;
+  }
+
+  .item-description {
+    font-size: 12px;
   }
 }
+
+@media only screen and (max-width: 550px) {
+  .Header {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    justify-content: space-between;
+    border: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+  }
+
+  .twittertext {
+    margin-top: 1.5rem;
+  }
+  .item-card {
+    margin-left: -1rem;
+    margin-right: -2rem;
+  }
+
+  .item-name {
+    font-size: 15px;
+  }
+
+  .twitter-handle {
+    font-size: 15px;
+  }
+
+  .author {
+    font-size: 18px;
+  }
+
+  .item-img {
+    height: 150px;
+    border: 2px;
+    border-style: solid;
+    border-radius: 1rem;
+    border-color: white;
+    margin-left: 10px;
+    margin-right: 1rem;
+  }
+
+  .twitterlogo {
+    height: 70px;
+    width: 70px;
+    margin-top: 0.2rem;
+  }
+  header nav {
+    display: flex;
+    gap: 16px;
+    justify-content: space-around;
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+  .avatar {
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    width: 40px;
+    height: 40px;
+    margin-top: -2px;
+  }
+
+  .logas {
+    font-size: 9px;
+    margin-top: 18px;
+  }
+
+  .order-btn {
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .single-item-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px;
+    border-radius: 2px;
+    border-style: solid;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 2rem;
+  }
+
+  .item-description {
+    font-size: 12px;
+  }
+}
+
 @media only screen and(max-width: 650px) {
   .Header {
     display: flex;

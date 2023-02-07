@@ -19,10 +19,10 @@ const OrderBy = ({ setOrderByValue, setSearchTerm, sortByValue }) => {
     <>
       <div className="orders">
         <button onClick={handleAscClick} value="asc" className="order-btn1">
-          <BsFillArrowUpCircleFill className="uparrow" size={40} />
+          <BsFillArrowUpCircleFill className="uparrow" size={30} />
         </button>
         <button onClick={handleDescClick} value="desc" className="order-btn2">
-          <BsFillArrowDownCircleFill className="downarrow" size={40} />
+          <BsFillArrowDownCircleFill className="downarrow" size={30} />
         </button>
       </div>
     </>
