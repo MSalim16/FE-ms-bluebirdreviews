@@ -135,7 +135,8 @@ nav {
   width: 100%;
   cursor: pointer;
   text-decoration: none;
-  margin: 4px 0;
+  padding: 10px;
+  border: solid 1px;
 }
 
 .dropdown-content :hover {
@@ -160,7 +161,8 @@ nav {
 }
 
 .item-img {
-  height: 500px;
+  height: 600px;
+  max-width: 1200px;
   border: 2px;
   border-style: solid;
   border-radius: 1rem;
@@ -246,11 +248,11 @@ nav {
 }
 
 nav a :hover {
-  background-color: #1c2732;
+  background-color: #0080ff;
 }
 
 .categoryicon:hover {
-  background-color: #1c2732;
+  background-color: #0080ff;
 }
 
 .list {
@@ -293,6 +295,7 @@ nav a :hover {
 
 .post-btn:hover {
   scale: 110%;
+  cursor: pointer;
 }
 
 .post-btn:active {
@@ -379,6 +382,7 @@ textarea {
 .order-btn1:hover {
   background-color: #1c2732;
   scale: 110%;
+  cursor: pointer;
 }
 
 .order-btn1:active {
@@ -392,6 +396,7 @@ textarea {
 .order-btn2:hover {
   background-color: #1c2732;
   scale: 110%;
+  cursor: pointer;
 }
 .order-btn2 {
   background-color: #15202b;
@@ -495,6 +500,10 @@ li {
 
   .twitter-handle {
     font-size: 15px;
+  }
+
+  .createdat {
+    font-size: 10px;
   }
 
   .author {

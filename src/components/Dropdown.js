@@ -18,7 +18,7 @@ function Dropdown({ label, items, itemLabel, display }) {
             to="/reviews"
             onClick={() => setDropdownVisible(false)}
           >
-            <div className="dropdown-item"></div>
+            <div className="dropdown-items"></div>
           </Link>
           {items.map((item, index) => {
             return (
