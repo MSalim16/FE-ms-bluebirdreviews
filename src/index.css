@@ -137,6 +137,7 @@ nav {
   text-decoration: none;
   padding: 10px;
   border: solid 1px;
+  background-color: #15202b;
 }
 
 .dropdown-content :hover {
